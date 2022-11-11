@@ -1,0 +1,31 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="469" Width="800">
+    <StackPanel Background="#FFB2D5D6">
+        <ToolBarTray Height="59" Width="797">
+            <ToolBar x:Name="toolBar" HorizontalAlignment="Center" Height="69" VerticalAlignment="Center" Width="308">
+                <Button x:Name="button" Content="Button" Height="54" Width="110" VerticalAlignment="Top"/>
+            </ToolBar>
+            <ToolBar x:Name="toolBar1" Height="69" Margin="0,0,-489,0">
+                <GroupBox x:Name="groupBox" Header="形狀" Width="359">
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton x:Name="radioButton" Content="Line" Width="100" Height="30"  Checked="RadioButtonIsCheck" IsChecked="True"/>
+                        <RadioButton x:Name="radioButton1" Content="Rectangle" Width="100" Height="30" IsChecked="False" Checked="RadioButtonIsCheck"/>
+                        <RadioButton x:Name="radioButton2" Content="Ellipse" Width="100" Height="30" IsChecked="False" Checked="RadioButtonIsCheck" />
+                    </StackPanel>
+                </GroupBox>
+            </ToolBar>
+        </ToolBarTray>
+        <Canvas x:Name="myCanvas" Height="330" MouseDown="myCanvas_MouseDown" Background="#FFB5E6E5" MouseMove="myCanvas_MouseMove" MouseUp="myCanvas_MouseUp"/>
+        <StatusBar Height="46">
+            <Label x:Name="positionLabel" Content="座標點:" Width="308" Height="36" FontSize="16"/>
+        </StatusBar>
+
+
+    </StackPanel>
+</Window>
