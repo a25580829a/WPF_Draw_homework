@@ -4,26 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="469" Width="800">
     <StackPanel Background="#FFB2D5D6">
         <ToolBarTray Height="59" Width="797">
-            <ToolBar x:Name="toolBar" HorizontalAlignment="Center" Height="69" VerticalAlignment="Center" Width="308">
-                <Button x:Name="button" Content="Button" Height="54" Width="110" VerticalAlignment="Top"/>
+            <ToolBar x:Name="toolBar" HorizontalAlignment="Center" Height="69" VerticalAlignment="Center" Width="410">
+                <Label Content="筆刷色彩" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+                <xctk:ColorPicker x:Name="StrokeColorPicker" Width="60" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" SelectedColorChanged="StrokeColorPicker_SelectedColorChanged"/>
+                <Label Content="填滿色彩" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+                <xctk:ColorPicker x:Name="StrokeFillColorPicker" Width="60" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" SelectedColorChanged="StrokeFillColorPicker_SelectedColorChanged" />
+                <Slider Name="ThicknessSlider" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="19" Minimum="1" Margin="10,0,0,0" IsSnapToTickEnabled="True" ValueChanged="ThicknessSlider_ValueChanged" Value="3"/>
+                <Label Content="{Binding Value, ElementName=ThicknessSlider}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
             </ToolBar>
-            <ToolBar x:Name="toolBar1" Height="69" Margin="0,0,-489,0">
-                <GroupBox x:Name="groupBox" Header="形狀" Width="359">
-                    <StackPanel Orientation="Horizontal">
-                        <RadioButton x:Name="radioButton" Content="Line" Width="100" Height="30"  Checked="RadioButtonIsCheck" IsChecked="True"/>
-                        <RadioButton x:Name="radioButton1" Content="Rectangle" Width="100" Height="30" IsChecked="False" Checked="RadioButtonIsCheck"/>
-                        <RadioButton x:Name="radioButton2" Content="Ellipse" Width="100" Height="30" IsChecked="False" Checked="RadioButtonIsCheck" />
-                    </StackPanel>
-                </GroupBox>
+            <ToolBar x:Name="toolBar1" Height="69" HorizontalAlignment="Left" VerticalAlignment="Center" Width="500">
+
+                <RadioButton x:Name="radioButton" Content="Line" Width="90" Height="50"  IsChecked="True" Margin="0,0,0,0" Click="RadioButtonClick"/>
+                <RadioButton x:Name="radioButton1" Content="Rectangle" Width="90" Height="50"  IsChecked="True" Margin="5,0,0,0" Click="RadioButtonClick"/>
+                <RadioButton x:Name="radioButton2" Content="Ellipse" Width="90" Height="50"  IsChecked="True" Margin="5,0,0,0" Click="RadioButtonClick"/>
+                <RadioButton x:Name="radioButton3" Content="Polyline" Width="90" Height="50"  IsChecked="True" Margin="5,0,0,0" Click="RadioButtonClick"/>
+
             </ToolBar>
         </ToolBarTray>
-        <Canvas x:Name="myCanvas" Height="330" MouseDown="myCanvas_MouseDown" Background="#FFB5E6E5" MouseMove="myCanvas_MouseMove" MouseUp="myCanvas_MouseUp"/>
+        <Canvas x:Name="myCanvas" Height="330" MouseLeftButtonDown="Canvas_MouseLeftButtonDown" Background="#FFB5E6E5" MouseMove="Canvas_MouseMove"  MouseLeftButtonUp="Canvas_MouseLeftButtonUp"/>
         <StatusBar Height="46">
             <Label x:Name="positionLabel" Content="座標點:" Width="308" Height="36" FontSize="16"/>
+            <Label x:Name="shapeLabel" Content="形狀個數:" Width="420" Height="36" FontSize="16"/>
         </StatusBar>
 
 
